@@ -1,0 +1,23 @@
+<h1>{{ name }}</h1>
+<dl>
+  <dt>Real name</dt>
+  <dd>{{ realname }}</dd>
+  <dt>Age</dt>
+  <dd>{{ age }}</dd>
+  <dt>City</dt>
+  <dd>{{ city }}</dd>
+  <dt>ToString</dt>
+  <dd>{{ ToString() }}</dd>
+</dl>
+
+<button type="button" class="btn btn-primary mx-2" (click)="changeNameCase()">
+  Cambiar mayúsculas/minúsculas
+</button>
+
+<button type="button" class="btn btn-primary mx-2" (click)="capitalizeName()">
+  Capitalizar nombre
+</button>
+
+<button type="button" class="btn btn-primary mx-2" (click)="changeAge(60)">
+  Cambiar Edad
+</button>
