@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { SharedModule } from './shared/shared.module';
+import { HeroesModule } from './heroes/heroes.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CounterComponent } from './counter/counter.component';
-import { HeroComponent } from './heroes/hero/hero.component';
-import { HeroListComponent } from './heroes/list/list.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CounterComponent,
-    HeroComponent,
-    HeroListComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    HeroesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
