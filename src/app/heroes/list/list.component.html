@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col">
+    <h3>
+      My Heroes
+    </h3>
+  </div>
+  <div class="col text-end">
+    <button class="btn btn-primary" (click)="resetHeros()" *ngIf="heroNames.length === 0">
+      RESET
+    </button>
+    <button class="btn btn-danger" (click)="removeLastHero()" *ngIf="heroNames.length > 0">
+      Remove Last Hero
+    </button>
+  </div>
+</div>
+
+<ul class="mt-2 list-group">
+  <li class="list-group-item" *ngFor="let name of heroNames">
+    {{ name }}
+  </li>
+</ul>
+
+<div class="row">
+  <div class="col">&nbsp;</div>
+  <div class="col text-end">
+
+    <!-- el ng-container es para afectar lo menos posible la secuencia de elementos del DOM -->
+    <!-- cuando no se cumple la expresion, va a mostrar la referencia local que esta luego del 'else' -->
+    <ng-container *ngIf="nameLastHeroRemoved; else elseTemplate">
+      <p class="text-danger small">
+        Hero removed: {{ nameLastHeroRemoved }}
+      </p>
+    </ng-container>
+
+    <!-- Este template no se va a mostrar nunca por defecto, a menos que esté referenciado en un *ngIf o *ngSwitch -->
+    <ng-template #elseTemplate>
+      <p class="text-success small">
+        All heroes exists in the list
+      </p>
+    </ng-template>
+  </div>
+</div>
