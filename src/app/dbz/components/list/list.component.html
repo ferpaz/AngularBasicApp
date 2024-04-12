@@ -5,16 +5,32 @@
       <tr>
         <th scope="col">Personaje</th>
         <th scope="col" class="text-end">Poder</th>
+        <th scope="col">#</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Krillin</td>
-        <td class="text-end">500</td>
-      </tr>
-      <tr>
-        <td>Goku</td>
-        <td class="text-end">99,999</td>
+      <!-- Se pueden extraer información adicional del ngFor -->
+      <tr *ngFor="
+        let character of characterList;
+        let i = index;
+        let isFirst = first;
+        let isLast = last
+        let isEven = even;
+        let isOdd = odd;
+      "
+      [ngClass]="{
+        'table-primary': character.selected
+      }"
+
+      (click)="selectCharacter(character)"
+      >
+        <td>{{ character.name }}</td>
+        <td class="text-end">{{ character.power.toLocaleString() }}</td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" (click)="emitDeleteCharacter(i);">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

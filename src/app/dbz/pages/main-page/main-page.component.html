@@ -3,9 +3,14 @@
 
 <div class="row">
   <div class="col">
-    <dbz-components-list></dbz-components-list>
+    <dbz-components-list
+      [CharacterList]="characters"
+      (onDeleteCharacter)="deleteCharacter($event);"
+    ></dbz-components-list>
   </div>
   <div class="col">
-    <dbz-components-form></dbz-components-form>
+    <dbz-components-form
+      (onNewCharacter)="addCharacter($event);"
+    ></dbz-components-form>
   </div>
 </div>
