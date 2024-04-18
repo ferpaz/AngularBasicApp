@@ -27,7 +27,7 @@
         <td>{{ character.name }}</td>
         <td class="text-end">{{ character.power.toLocaleString() }}</td>
         <td>
-          <button type="button" class="btn btn-danger btn-sm" (click)="emitDeleteCharacter(i);">
+          <button type="button" class="btn btn-danger btn-sm" (click)="emitDeleteCharacter(character.id);">
             <i class="bi bi-trash"></i>
           </button>
         </td>

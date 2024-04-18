@@ -5,12 +5,12 @@
   <div class="col">
     <dbz-components-list
       [CharacterList]="characters"
-      (onDeleteCharacter)="deleteCharacter($event);"
+      (onDeleteCharacter)="onDeleteCharacter($event);"
     ></dbz-components-list>
   </div>
   <div class="col">
     <dbz-components-form
-      (onNewCharacter)="addCharacter($event);"
+      (onNewCharacter)="onAddCharacter($event);"
     ></dbz-components-form>
   </div>
 </div>

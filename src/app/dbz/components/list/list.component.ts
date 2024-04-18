@@ -8,7 +8,7 @@ import { Character } from "../../interfaces/character.interface";
 export class ListComponent {
 
   @Output()
-  public onDeleteCharacter: EventEmitter<number> = new EventEmitter<number>();
+  public onDeleteCharacter: EventEmitter<string> = new EventEmitter<string>();
 
   // El decorador @Input permite que esta propiedad recibar un valor desde otro componente
   // cuando se referencia en el template de otro componente
@@ -29,7 +29,7 @@ export class ListComponent {
     character.selected = true;
   }
 
-  public emitDeleteCharacter(index: number) {
-    this.onDeleteCharacter.emit(index);
+  public emitDeleteCharacter(id: string) {
+    this.onDeleteCharacter.emit(id);
   }
 }

@@ -1,40 +1,37 @@
 import { Component } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
+import { DbzService } from '../../services/dbz-service';
 
 @Component({
   selector: 'dbz-main-page',
   templateUrl: './main-page.component.html'
 })
 export class MainPageComponent {
-  public characters: Character[] = [
-    { name: 'Goku', power: 15000, selected: true },
-    { name: 'Vegeta', power: 7500, selected: false },
-    { name: 'Krillin', power: 5000, selected: false},
-    { name: 'Piccolo', power: 8000, selected: false }
-  ];
 
-  public addCharacter(caracter: Character): void {
-    console.log(caracter);
+  // Las inyecciones de dependencias se hacen en el constructor y preferentemente se hacen con variables privadas
+  constructor(private dbzService : DbzService) {}
 
-    this.unSelectAllCharacters();
-
-    caracter.selected =true;
-
-    // al hacer push se puso la notación que agrega una referencia a un objeto nuevo
-    this.characters.push({...caracter});
+  public get characters(): Character[] {
+    return [...this.dbzService.characters];
   }
 
-  public deleteCharacter(index: number): void {
-    console.log('deleteCharacter', index);
-
+  public onAddCharacter(caracter: Character): void {
     this.unSelectAllCharacters();
-    this.characters.splice(index, 1);
+    caracter.selected =true;
+
+    this.dbzService.addCharacter(caracter);
+  }
+
+  public onDeleteCharacter(id: string): void {
+    const index = this.dbzService.characters.findIndex((c) => c.id === id);
+    if (this.dbzService.characters[index].selected) this.unSelectAllCharacters();
+
+    this.dbzService.deleteCharacter(id);
   }
 
   private unSelectAllCharacters(): void {
-    this.characters.forEach((c) => {
+    this.dbzService.characters.forEach((c) => {
       c.selected = false;
     });
   }
-
 }
